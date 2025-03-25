@@ -1,15 +1,12 @@
 package org.manager.students.resources;
 
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.manager.students.domain.dto.AlunoDto;
-import org.manager.students.domain.form.AlunoForm;
 import org.manager.students.domain.services.AlunoService;
 import org.manager.students.exception.AlunoNaoEncontradoException;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;

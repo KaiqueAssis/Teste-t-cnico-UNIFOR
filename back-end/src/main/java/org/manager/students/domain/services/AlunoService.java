@@ -19,15 +19,9 @@ public class AlunoService {
 
     @Transactional
     public AlunoDto cadastrarAluno(String nome) {
-        System.out.println(nome);
         Aluno aluno = new Aluno(nome);
-        try {
-            repository.persist(aluno); // Persiste o aluno no banco
-            return aluno.converterParaDto();
-        } catch (Exception e) {
-            e.printStackTrace(); // Imprime o erro no console
-            throw new RuntimeException("Erro ao persistir aluno", e);
-        }
+        repository.persist(aluno);
+        return aluno.converterParaDto();
     }
 
     public AlunoDto buscarAlunoPorUuid(String uuidAluno)
@@ -54,7 +48,7 @@ public class AlunoService {
     public Aluno buscarAlunoEValidar(String uuid)
             throws AlunoNaoEncontradoException {
         return repository.buscarAlunoPeloUuid(uuid)
-                .orElseThrow(() -> new AlunoNaoEncontradoException("Aluno com UUID " + uuid + " não encontrado!"));
+                .orElseThrow(() -> new AlunoNaoEncontradoException("Aluno não encontrado!"));
     }
 
 }
