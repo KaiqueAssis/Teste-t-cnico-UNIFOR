@@ -1,12 +1,12 @@
 package org.manager.students.exception;
 
-public class MensagemExceptional {
+public class Mensagem {
 
     private String mensagem;
 
     private String detalhe;
 
-    public MensagemExceptional(String mensagem, String detalhe) {
+    public Mensagem(String mensagem, String detalhe) {
         this.mensagem = mensagem;
         this.detalhe = detalhe;
     }

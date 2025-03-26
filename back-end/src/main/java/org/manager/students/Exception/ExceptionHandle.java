@@ -15,22 +15,22 @@ public class ExceptionHandle implements ExceptionMapper<Exception> {
 
         if (e instanceof ItemExistenteException) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(new MensagemExceptional("Item Existente", e.getMessage()))
+                    .entity(new Mensagem("Item Existente", e.getMessage()))
                     .build();
         }
 
         if (e instanceof AlunoNaoEncontradoException) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(new MensagemExceptional("Error", e.getMessage()))
+                    .entity(new Mensagem("Error", e.getMessage()))
                     .build();
         }
         if (e instanceof CursoNaoEncontradoException) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(new MensagemExceptional("Error", e.getMessage()))
+                    .entity(new Mensagem("Error", e.getMessage()))
                     .build();
         }
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity(new MensagemExceptional("Error", "Por favor entre em contato"))
+                .entity(new Mensagem("Error", "Por favor entre em contato"))
                 .build();
     }
 
