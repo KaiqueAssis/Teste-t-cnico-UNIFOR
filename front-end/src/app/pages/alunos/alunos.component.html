@@ -1,1 +1,44 @@
-<p>alunos works!</p>
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <P>Alunos</P>
+    <button pButton label="Adicionar Novo Aluno" (click)="mostrarModal()" icon="pi pi-check" class="p-button-success p-button-rounded"></button>
+</div>
+
+
+
+<!-- Tabela de Alunos -->
+<p-table [value]="alunos" [responsive]="true" class="custom-table">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Aluno</th>
+            <th class="actions-column">Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-aluno>
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td class="actions-column">
+                <button pButton label="Deletar" icon="pi pi-trash" class="p-button-danger p-button-rounded" (click)="deletarAlunos(aluno.uuid)"></button>
+                <button pButton label="Matricular" icon="pi pi-check" class="p-button-success p-button-rounded"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<!-- Modal para Adicionar Novo Aluno -->
+<p-dialog header="Novo Aluno" [modal]="true" [(visible)]="modalVisivel" 
+    [style]="{ 'background-color': '#ffffff', 'border-radius': '10px', 'padding': '20px',  'border': '2px solid #007bff' }" 
+    [closable]="false" [baseZIndex]="10000" [styleClass]="'custom-modal'">
+    
+    <div class="modal-content" [formGroup]="myGroup">
+        <div class="flex items-center gap-4 mb-4" style="margin-bottom: 30px;">
+            <label for="nome" class="font-semibold w-24">Nome do Aluno</label>
+            <input pInputText id="nome" formControlName="firstName" class="flex-auto p-inputtext-lg p-d-block" autocomplete="off" />
+        </div>
+
+        <div class="flex justify-end gap-2" style="margin-top: 20px;">
+            <button pButton label="Cancelar" severity="secondary" class="p-button-rounded p-button-text" (click)="modalVisivel = false"></button>
+            <button pButton label="Salvar" class="p-button-rounded p-button-success p-button-lg"  (click)="addAluno()"></button>
+        </div>
+    </div>
+</p-dialog>

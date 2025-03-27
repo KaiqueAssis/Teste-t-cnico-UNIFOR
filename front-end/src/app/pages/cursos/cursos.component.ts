@@ -50,7 +50,7 @@ export class CursosComponent {
   this.cursoService.adicionar(cursoBody).subscribe({
     next: () => {
       console.log('Curso criado com sucesso');
-      this.cursoForm.reset(); // Limpar o formulário após o envio
+      this.cursoForm.reset(); 
     },
     error: (erro) => console.error('Erro ao criar curso:', erro)
   });
