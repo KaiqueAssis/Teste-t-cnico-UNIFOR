@@ -11,7 +11,7 @@ import { environment } from '../../enviroments/environment';
 
 export class CursoService {
 
-  private apiUrl = environment.apiUrl+"cursos";
+  private apiUrl = environment.apiUrl+"cursos/";
 
 
   constructor(private http : HttpClient) { }
@@ -25,7 +25,11 @@ export class CursoService {
   }
 
   deletar(uuid: string): Observable<void> {
-    return this.http.delete<void>(this.apiUrl + uuid)
+    return this.http.delete<void>(`${this.apiUrl}/${uuid}`);
+  }
+
+  listarCursoDisponivelParaMatricula(uuid: string): Observable<Curso[]>{
+    return this.http.get<Curso[]>(`${this.apiUrl}disponiveis/${uuid}`);
   }
 
 }

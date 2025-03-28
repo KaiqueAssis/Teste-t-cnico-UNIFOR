@@ -13,7 +13,7 @@ export class MatriculaService {
 
   constructor(private http : HttpClient) { }
 
-  fazerMatricula(form: {uuidAluno: string, uuidCurso: string}): Observable<void>{
+  fazerMatricula(form: {uuidDoAluno: string, uuidDoCurso: string}): Observable<void>{
     return this.http.post<void>(this.apiUrl, form)
   }
 }

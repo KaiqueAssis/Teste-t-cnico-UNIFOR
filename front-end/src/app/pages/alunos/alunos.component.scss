@@ -1,228 +1,42 @@
-/* Estilo da Tabela */
-.custom-table {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    background-color: #ffffff; 
+.input-container label {
+    display: block; 
+    margin-bottom: 5px; 
+  }
+.input-container {
+    margin: 10px
 }
 
-.custom-table th, .custom-table td {
-    padding: 15px 20px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-    font-size: 14px;
-    color: #333; 
+.input-select {
+    width: 300px;
 }
 
-.custom-table th {
-    background-color: #007bff; 
-    color: #ffffff; 
-    font-weight: 600;
-    text-transform: uppercase; /* Texto maiúsculo */
-}
+.input-select {
+    display: block; 
+    margin-bottom: 15px; 
+  }
 
-.custom-table tr:hover {
-    background-color: #f5f5f5; /* Cor de fundo quando o usuário passa o mouse */
-}
+  .custom-modal .p-multiselect-panel {
+    z-index: 10001;  
+  }
+  
+  .custom-modal .p-multiselect {
+    width: 100%;  
+  }
 
-/* Estilo para a coluna de Ações */
-.actions-column {
+.container-title{
+    margin: 10px 0px;
+    height: 50px;
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content: space-between;
+}
+.add{
+    height: 10px;
 }
 
 .actions-column button {
-    border-radius: 25px;
-    padding: 6px 12px;
-    font-size: 12px;
+  margin-right: 8px;
 }
 
-/* Estilo dos botões */
-.p-button-rounded.p-button-success {
-    background-color: #28a745;
-    border-color: #28a745;
-    color: #fff;
-}
-
-.p-button-rounded.p-button-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-
-.p-button-rounded.p-button-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-    color: #fff;
-}
-
-.p-button-rounded.p-button-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-/* Estilo do Modal */
-.p-dialog {
-    border-radius: 8px; /* Bordas arredondadas */
-    background-color: #ffffff; /* Fundo sólido para o modal */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
-}
-
-.p-dialog .p-dialog-header {
-    background-color: #007bff; /* Cor de fundo do cabeçalho do modal */
-    color: #ffffff; /* Cor do texto */
-}
-
-.p-dialog .p-dialog-footer {
-    background-color: #f5f5f5; /* Cor de fundo do rodapé */
-}
-
-/* Inputs no Modal */
-.p-inputtext {
-    border-radius: 5px; /* Bordas arredondadas nos inputs */
-    padding: 8px 12px;
-    font-size: 14px;
-    width: 100%;
-    border: 1px solid #ddd; /* Borda suave nos campos */
-}
-
-.p-inputtext:focus {
-    border-color: #007bff; /* Cor de borda quando o campo está em foco */
-}
-
-/* Estilo para os botões dentro do Modal */
-.p-button {
-    border-radius: 25px;
-    padding: 8px 15px;
-    font-size: 14px;
-}
-
-.p-button-rounded.p-button-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    color: #fff;
-}
-
-.p-button-rounded.p-button-secondary:hover {
-    background-color: #5a6268;
-    border-color: #545b62;
-}
-/* Personalizando o modal */
-::ng-deep .p-dialog {
-    background-color: #ffffff; /* cor de fundo */
-    border-radius: 12px; /* bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* sombra suave */
-    padding: 20px; /* padding do modal */
-    transition: all 0.3s ease-in-out; /* transição suave */
-}
-
-/* Personalizando o conteúdo do modal */
-::ng-deep .p-dialog .p-dialog-content {
-    background-color: #ffffff; /* cor de fundo */
-    padding: 20px;
-    font-size: 16px;
-    color: #333333; /* cor do texto */
-}
-
-/* Ajuste para os botões */
-::ng-deep .p-button {
-    border-radius: 20px; /* bordas arredondadas */
-    padding: 10px 20px; /* tamanho do botão */
-}
-
-::ng-deep .p-button-success {
-    background-color: #28a745; /* cor verde para sucesso */
-    border-color: #28a745;
-    transition: all 0.3s ease;
-}
-
-::ng-deep .p-button-success:hover {
-    background-color: #218838;
-    border-color: #218838;
-}
-
-::ng-deep .p-button-secondary {
-    background-color: #6c757d; /* cor cinza para o botão secundário */
-    border-color: #6c757d;
-    transition: all 0.3s ease;
-}
-
-::ng-deep .p-button-secondary:hover {
-    background-color: #5a6268;
-    border-color: #5a6268;
-}
-
-/* Estilizando a input */
-::ng-deep .p-inputtext {
-    border-radius: 8px; /* bordas arredondadas na input */
-    border: 1px solid #ccc; /* borda suave */
-    padding: 8px 12px; /* padding na input */
-    font-size: 14px;
-    color: #555;
-}
-
-::ng-deep .p-inputtext:focus {
-    border-color: #80bdff; /* borda azul ao focar */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* sombra azul ao focar */
-}
-
-/* Responsividade */
-@media (max-width: 767px) {
-    .custom-table th, .custom-table td {
-        padding: 10px 15px;
-    }
-}
-
-:host ::ng-deep .custom-modal {
-    width: 100%;
-    max-width: 500px; /* Mantém um tamanho adequado em telas grandes */
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.input-field {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.cancel-button, .save-button {
-    width: 100px;
-}
-
-/* Responsividade */
-@media screen and (max-width: 600px) {
-    :host ::ng-deep .custom-modal {
-        max-width: 90%; /* Em telas menores, o modal ocupa 90% da largura */
-        padding: 15px;
-    }
-
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .cancel-button, .save-button {
-        width: 100%; /* Botões ocupam toda a largura */
-    }
+.actions-column button:last-child {
+  margin-right: 0;
 }

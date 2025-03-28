@@ -1,1 +1,72 @@
-<p>cursos works!</p>
+<div class="container-title">
+    <P class="title">Cursos</P>
+    <button pButton class="add" label="Adicionar" (click)="mostrarModalDeCadastro()" class="p-button-success p-button-rounded"></button>
+</div>
+
+
+
+<p-table [value]="cursos" [responsive]="true" class="custom-table">
+    <ng-container *ngIf="cursos.length === 0; else cursoTable">
+        <p>Nenhum aluno matriculado.</p> 
+    </ng-container>
+  
+    <ng-template pTemplate="header" >
+        <tr>
+            <th>Curso</th>
+            <th class="actions-column">Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" #cursoTable let-curso>
+        <tr>
+            <td>{{ curso.nome }}</td>
+            <td class="actions-column">
+                <button pButton icon="pi pi-trash" title="Deletar curso" (click)="deletarCurso(curso.uuid)" class="p-button-danger p-button-rounded" ></button>
+                <button pButton icon="pi pi-users" title="Visualizar alunos matriculados" (click)="mostrarModalDasMatriculas(curso.alunoDtos)" class="p-button-info p-button-rounded" ></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Novo Curso" [modal]="true" [(visible)]="modalCadastrarCurso"
+    [closable]="false" [baseZIndex]="10000" [styleClass]="'custom-modal'">
+    
+    <div class="modal-content" >
+        <div class="input-container"  [formGroup]="cursoForm">
+            <label for="nome" class="font-semibold">Nome do Curso</label>
+            <input pInputText id="nome" formControlName="nome" class="input-field" autocomplete="off" />
+        </div>
+
+        <div class="button-container">
+            <button pButton label="Cancelar" severity="secondary" class="cancel-button" (click)="modalCadastrarCurso = false"></button>
+            <button pButton label="Salvar" class="save-button" (click)="adicionarCurso()"></button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog header="Alunos Matriculados" [(visible)]="modalMatriculas" [modal]="true" [closable]="true" [baseZIndex]="10000">
+    <div class="modal-content">
+        
+        <ng-container *ngIf="alunosMatriculados.length === 0; else alunosTable">
+            <p>Nenhum aluno matriculado.</p> 
+        </ng-container>
+      
+    <ng-template #alunosTable>
+        <p-table [value]="alunosMatriculados" [paginator]="true" [rows]="5" [responsive]="true">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-aluno>
+          <tr>
+            <td>{{ aluno.nome }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-template>
+  
+      <div class="button-container">
+        <button pButton label="Fechar" icon="pi pi-times" (click)="fecharModalDasMatriculas()"></button>
+      </div>
+    </div>
+  </p-dialog>
