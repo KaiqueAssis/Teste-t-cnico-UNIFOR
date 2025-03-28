@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.manager.students.domain.dto.CursoDto;
+import org.manager.students.domain.entity.Aluno;
 import org.manager.students.domain.entity.Curso;
 import org.manager.students.domain.form.CursoForm;
 import org.manager.students.domain.repository.CursoRepository;
+import org.manager.students.exception.AlunoNaoEncontradoException;
 import org.manager.students.exception.CursoNaoEncontradoException;
 import org.manager.students.exception.ItemExistenteException;
 
@@ -19,6 +21,9 @@ public class CursoService {
 
     @Inject
     CursoRepository repository;
+
+    @Inject
+    AlunoService alunoService;
 
     public List<CursoDto> listarTodosOsCursos() {
         return repository.todosOsCursosOrdenadosPeloNome()
@@ -55,6 +60,17 @@ public class CursoService {
         if (cursoExistente.isPresent()) {
             throw new ItemExistenteException(String.format("Já existe um curso com o nome %s", nome));
         }
+    }
+
+    public List<CursoDto> pegarCursoDisponivelParaFazerMatricula(String uuidAluno)
+            throws AlunoNaoEncontradoException {
+        Aluno aluno = alunoService.buscarAlunoEValidar(uuidAluno);
+
+        return repository.todosOsCursosOrdenadosPeloNome().stream()
+                .filter(curso -> !curso.getAlunos().contains(aluno))
+                .map(Curso::converterParaDto)
+                .toList();
+
     }
 
 }

@@ -6,6 +6,7 @@ import org.manager.students.domain.dto.AlunoDto;
 import org.manager.students.domain.entity.Aluno;
 import org.manager.students.domain.repository.AlunoRepository;
 import org.manager.students.exception.AlunoNaoEncontradoException;
+import org.manager.students.exception.ItemNaoPodeSerDeletadoException;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -41,8 +42,17 @@ public class AlunoService {
 
     @Transactional
     public void deletarAluno(String uuid)
-            throws AlunoNaoEncontradoException {
-        repository.delete(buscarAlunoEValidar(uuid));
+            throws AlunoNaoEncontradoException,
+             ItemNaoPodeSerDeletadoException {
+        Aluno aluno = buscarAlunoEValidar(uuid);
+        verificaSeAlunoEstaMatriculadoEmAlgumCurso(aluno);
+        repository.delete(aluno);
+    }
+
+    public void verificaSeAlunoEstaMatriculadoEmAlgumCurso(Aluno aluno) throws ItemNaoPodeSerDeletadoException{
+        if(aluno.getMatriculas() != null && !aluno.getMatriculas().isEmpty()){
+           throw new ItemNaoPodeSerDeletadoException("Aluno está matricula em algum curso."); 
+        }
     }
 
     public Aluno buscarAlunoEValidar(String uuid)

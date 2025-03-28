@@ -1,12 +1,12 @@
 package org.manager.students.exception;
 
-public class Mensagem {
+public class ApiMensagem {
 
     private String mensagem;
 
     private String detalhe;
 
-    public Mensagem(String mensagem, String detalhe) {
+    public ApiMensagem(String mensagem, String detalhe) {
         this.mensagem = mensagem;
         this.detalhe = detalhe;
     }

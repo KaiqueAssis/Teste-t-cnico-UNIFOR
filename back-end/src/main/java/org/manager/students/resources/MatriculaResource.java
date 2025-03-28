@@ -7,10 +7,8 @@ import org.manager.students.exception.CursoNaoEncontradoException;
 import org.manager.students.exception.ItemExistenteException;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 
 @Path("matriculas")
@@ -24,15 +22,5 @@ public class MatriculaResource {
             throws AlunoNaoEncontradoException, CursoNaoEncontradoException, ItemExistenteException {
         service.matriculaAlunoAUmCurso(form);
         return Response.ok().build();
-    }
-
-    @DELETE
-    @Path("{uuidAluno}/{uuidCurso}")
-    public Response deletarMatriculaDoAluno(@PathParam("uuidAluno") String uuidAluno,
-            @PathParam("uuidCurso") String uuidCurso)
-            throws AlunoNaoEncontradoException, CursoNaoEncontradoException {
-
-        service.deletarMatricula(uuidAluno, uuidCurso);
-        return Response.noContent().build();
     }
 }

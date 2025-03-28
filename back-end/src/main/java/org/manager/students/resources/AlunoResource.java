@@ -3,6 +3,7 @@ package org.manager.students.resources;
 import org.manager.students.domain.dto.AlunoDto;
 import org.manager.students.domain.services.AlunoService;
 import org.manager.students.exception.AlunoNaoEncontradoException;
+import org.manager.students.exception.ItemNaoPodeSerDeletadoException;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -46,8 +47,7 @@ public class AlunoResource {
     @DELETE
     @Path("{uuid}")
     public Response deletarItens(@PathParam("uuid") String uuid)
-            throws AlunoNaoEncontradoException {
-
+            throws AlunoNaoEncontradoException, ItemNaoPodeSerDeletadoException {
         service.deletarAluno(uuid);
         return Response.ok().build();
     }

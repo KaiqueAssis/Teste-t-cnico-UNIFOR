@@ -2,6 +2,7 @@ package org.manager.students.resources;
 
 import org.manager.students.domain.form.CursoForm;
 import org.manager.students.domain.services.CursoService;
+import org.manager.students.exception.AlunoNaoEncontradoException;
 import org.manager.students.exception.CursoNaoEncontradoException;
 import org.manager.students.exception.ItemExistenteException;
 
@@ -37,5 +38,13 @@ public class CursoResource {
             throws CursoNaoEncontradoException {
         service.deletarCurso(uuid);
         return Response.noContent().build();
+    }
+
+    @GET
+    @Path("disponiveis/{uuidAluno}")
+    public Response buscarCursosDisponeiveisParaMatricula(@PathParam("uuidAluno") String uuidAluno)
+            throws AlunoNaoEncontradoException {
+        return Response.ok(service.pegarCursoDisponivelParaFazerMatricula(uuidAluno))
+                .build();
     }
 }
