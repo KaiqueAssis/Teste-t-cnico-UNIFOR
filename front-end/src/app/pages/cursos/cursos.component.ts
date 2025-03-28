@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cursos',
   standalone: true,
-  imports: [ButtonModule  ,TableModule,CommonModule,ToastModule, DialogModule, ReactiveFormsModule, InputTextModule],
+  imports: [ButtonModule ,TableModule,CommonModule,ToastModule, DialogModule, ReactiveFormsModule, InputTextModule],
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.scss',
   providers: [MessageService]
